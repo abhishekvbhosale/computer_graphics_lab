@@ -1,10 +1,44 @@
 #include <iostream>
 #include <stdlib.h>
 #include <graphics.h>
-class Circle1
+class figures
 {
-		int x,y,R;
+		int x;
+		int y;
+		int r;
 	public :
+		void line(int x1,int y1,int x2,int y2)
+		{
+			//set s;
+			int m;
+			int x,y;
+			int dx,dy;
+			int e;
+			 
+			x=x1;
+			y=y1;
+			
+			dx=x2-x1;
+			dy=y2-y1;
+			
+			m=dy/dx;
+			
+			e=m-(1/2);
+			
+			for(int i=1;i<=dx;i++)
+			{
+				putpixel(x,y,GREEN);
+				//s.setpixel(x,y);
+				while(e>0)
+				{
+					y=y+1;
+					e=e-1;
+				}
+				x=x+1;
+				e=e+m;
+			}
+		}
+		
 		void Mh(int& x,int& y,int& di)
 		{
 			x=x+1;
@@ -55,14 +89,25 @@ class Circle1
 			}
 		}
 };
-
 int main()
 {
-	Circle1 c1;
+	figures l1;
+	
 	int gm, gd,i;
 	gd=DETECT;
 	initgraph(&gm, &gd,NULL);
-	c1.Bresen_Circle(100,100,50);
+	//outer rectangle--
+		//horizontal--
+	l1.line(50,50,250,50);
+	l1.line(50,150,250,150);
+		//vertical--
+	//l1.line(50,50,50,150);
+	//l1.line(250,50,250,150);
+	//rhombus----
+	//l1.line(150,50,250,100);
+	//l1.line(250,100,100,150);
+	//l1.line(100,150,50,100);
+	//l1.line(50,100,150,50);
 	delay(5000);
 	closegraph();
 	return 0;
